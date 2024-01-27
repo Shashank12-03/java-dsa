@@ -1,3 +1,5 @@
+package Trees;
+
 public class leetcode98 {
     public class TreeNode {
         int val;
