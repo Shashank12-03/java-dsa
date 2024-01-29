@@ -2,25 +2,13 @@ package Trees;
 
 import java.util.*;
 public class leetcode662 {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-    public int widthOfBinaryTree(TreeNode root) {
+    public static int widthOfBinaryTree(TreeNode root) {
         if (root == null) {
             return 0;
         }
         return dfs(root, 0, 1, new ArrayList<Integer>());
     }
-    private int dfs(TreeNode root, int depth, int index, List<Integer> list) {
+    private static int dfs(TreeNode root, int depth, int index, List<Integer> list) {
         if(root == null) {
             return 0;
         }
