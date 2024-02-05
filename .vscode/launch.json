@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "leetcode387",
+            "request": "launch",
+            "mainClass": "arrays.leetcode387",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "leetcode2035",
+            "request": "launch",
+            "mainClass": "dp.leetcode2035",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "leetcode20",
+            "request": "launch",
+            "mainClass": "stack.leetcode20",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
             "name": "leetcode1291",
             "request": "launch",
             "mainClass": "arrays.leetcode1291",

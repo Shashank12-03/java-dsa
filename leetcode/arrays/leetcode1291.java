@@ -13,6 +13,5 @@ public class leetcode1291 {
             }
         }
         return ans;
-
     }
 }
