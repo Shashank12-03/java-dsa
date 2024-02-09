@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "leetcode494",
+            "request": "launch",
+            "mainClass": "dp.leetcode494",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "partition_sum_diff_target",
+            "request": "launch",
+            "mainClass": "dp.partition_sum_diff_target",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
             "name": "leetcode279",
             "request": "launch",
             "mainClass": "dp.leetcode279",
