@@ -1,13 +1,20 @@
 package dsa.stack;
 class MinStack {
-    int[] data;
-    int ptr=-1;
-    static final int DEFAULT_SIZE=10;
-    public MinStack(){
-        this(DEFAULT_SIZE);
+    public class Node{
+        int min;
+        int val;
+        Node prev;
+        Node next;
+        public Node(int min,int val,Node prev,Node next){
+            this.min=min;
+            this.val=val;
+            this.prev=prev;
+            this.next=next;
+        }
     }
-    public MinStack(int size){
-        this.data=new int[size];
+    private Node head;
+    public MinStack(){
+        this.head=new Node(Integer.MAX_VALUE,0,null,null);
     }
     
     public void push(int val) {
@@ -18,29 +25,25 @@ class MinStack {
         //     }
         //     data=temp;
         // }
-        ptr++;
-        data[ptr]=val;
-    }
-    public boolean isfull(){
-        return ptr==data.length-1;
+        Node nextNode;
+        if (val<=head.min) {
+            nextNode=new Node(val, val, head, null);
+        }
+        else{
+            nextNode=new Node(head.min, val, head, null);
+        }
+        head.next=nextNode;
+        head=nextNode;
     }
     public void pop() {
-        ptr--;
+        head=head.prev;
     }
     
     public int top() {
-        return data[ptr];
+        return head.val;
     }
     
     public int getMin() {
-        int[] temp=new int[data.length];
-        for(int i=0;i<=ptr;i++){
-            temp[i]=data[i];
-        }
-        int min=Integer.MAX_VALUE;
-        for(int i=0;i<=ptr;i++){
-            min=Math.min(min,temp[i]);
-        }
-        return min;
+        return head.min;
     }
 }

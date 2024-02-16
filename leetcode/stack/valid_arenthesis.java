@@ -1,6 +1,6 @@
+package stack;
 
 import java.util.Stack;
-
 public class valid_arenthesis {
     public static void main(String[] args) {
         System.out.println(valid("{[(]}"));
