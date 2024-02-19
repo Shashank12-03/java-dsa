@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "leetcode45",
+            "request": "launch",
+            "mainClass": "greedy.leetcode45",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "leetcode55",
+            "request": "launch",
+            "mainClass": "greedy.leetcode55",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "leetcode55",
+            "request": "launch",
+            "mainClass": "dp.leetcode55",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "minimumPlatform",
+            "request": "launch",
+            "mainClass": "greedy.minimumPlatform",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "leetcode1642",
+            "request": "launch",
+            "mainClass": "arrays.leetcode1642",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
             "name": "leetcode1481",
             "request": "launch",
             "mainClass": "arrays.leetcode1481",
