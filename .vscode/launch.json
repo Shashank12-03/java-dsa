@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "dfs",
+            "request": "launch",
+            "mainClass": "dsa.graph.dfs",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "bfs",
+            "request": "launch",
+            "mainClass": "dsa.graph.bfs",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "leetcode110",
+            "request": "launch",
+            "mainClass": "Trees.leetcode110",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
+            "name": "palindrom",
+            "request": "launch",
+            "mainClass": "greedy.palindrom",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
             "name": "leetcode134",
             "request": "launch",
             "mainClass": "greedy.leetcode134",
