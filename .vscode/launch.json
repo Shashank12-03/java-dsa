@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "leetcode547",
+            "request": "launch",
+            "mainClass": "graph.leetcode547",
+            "projectName": "dsa & leetcode_128d3736"
+        },
+        {
+            "type": "java",
             "name": "dfs",
             "request": "launch",
             "mainClass": "dsa.graph.dfs",
