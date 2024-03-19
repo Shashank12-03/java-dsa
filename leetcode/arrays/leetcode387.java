@@ -1,5 +1,4 @@
 package arrays;
-import java.util.*;
 public class leetcode387 {
     public static void main(String[] args) {
         System.out.println(firstUniqChar("leetcode"));
