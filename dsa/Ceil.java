@@ -1,25 +1,26 @@
-import java.util.*; 
+// import java.util.*;
 public class Ceil {
     public static void main(String[] args) 
     {
-        Scanner t=new Scanner(System.in);
-        int n=t.nextInt();
-        int[] arr=new int[n];
-        for(int i=0;i<n;i++)
-        {
-            arr[i]=t.nextInt();
-        }
-        for(int i=0;i<n;i++)
-        {
-            System.out.print(arr[i]);
-        }
-        System.out.println();
-        int target=t.nextInt();
-        int ans=ceil(arr,target);
-        System.out.println(ans);
-        t.close();
+        // Scanner t=new Scanner(System.in);
+        // int n=t.nextInt();
+        // int[] arr=new int[n];
+        // for(int i=0;i<n;i++)
+        // {
+        //     arr[i]=t.nextInt();
+        // }
+        // for(int i=0;i<n;i++)
+        // {
+        //     System.out.print(arr[i]);
+        // }
+        // System.out.println();
+        // int target=t.nextInt();
+        // int ans=ceil(arr,target);
+        // System.out.println(ans);
+        // t.close();
+        System.out.println(ceil(new int[]{2,3,4,6,9,12,14},8));
     }
-    static int ceil(int[] arr,int target)
+    public static int ceil(int[] arr,int target)
     {
         if (target>arr[arr.length-1])
         {
