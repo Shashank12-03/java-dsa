@@ -1,4 +1,4 @@
-package arrays;
+package binarysearch;
 public class BooksAllocation {
     public static void main(String[] args) {
         System.out.println(books(new int[]{12,34,67, 90}, 2));

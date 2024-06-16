@@ -29,7 +29,7 @@ public class leetcode1011 {
         int ans=-1;
         while(s<=e){
             int mid=s+(e-s)/2;
-            if(canshipcargo(weights,mid, days)){
+            if(canshipcargo(weights, mid, days)){
                 ans=mid;
                 e=mid-1;
             }
