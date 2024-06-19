@@ -1,3 +1,4 @@
+package binarysearch;
 
 public class leetcode4 {
     public static void main(String[] args) {
