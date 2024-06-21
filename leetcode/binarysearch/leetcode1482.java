@@ -40,7 +40,7 @@ public class leetcode1482 {
                 bouquet = 0;
             }
         }
-        noOBO += bouquet/k;
+        noOBO += bouquet/k; // if divisble means we encountered one set for bouquet
         return noOBO>=m;
     }
 }
