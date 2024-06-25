@@ -1,20 +1,35 @@
 package string;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class leetcode17{
     public static void main(String[] args) {
-        keypad("", "23");
+        System.out.println(letterCombinations("23"));
     }
-    // public List<String> letterCombinations(String digits) {
-        
-    // }
-    static void keypad(String p, String up){
+    public static List<String> letterCombinations(String digits) {
+        return keypad("", digits);
+    }
+    static List<String> keypad(String p, String up){
         if(up.isEmpty()){
-            System.out.println(p);
-            return;
+            List<String> list = new ArrayList<>();
+            list.add(p);
+            return list;
         }
         int digit= up.charAt(0)-'0';
-        for(int i=(digit-1)*3;i<(digit*3);i++){
-            char ch=(char)('a'+ i);
-            keypad(p+ch, up.substring(1));
+        int st = (digit-2)*3;
+        if(digit>7){
+            st+=1;
         }
+        int len=st+3;
+        if (digit==7 && digit==9){
+            len+=1;
+        }
+        List<String> list = new ArrayList<>();
+        for(int i=st;i<len;i++){
+            char ch=(char)('a'+ i);
+            list.addAll(keypad(p+ch, up.substring(1)));
+        }
+        return list;
     }
 }
