@@ -1,3 +1,4 @@
+package stack;
 
 
 import java.util.Arrays;
@@ -5,48 +6,33 @@ import java.util.Stack;
 
 public class leetcode735 {
     public static void main(String[] args) {
-        //System.out.println(Arrays.toString(asteroidCollision(new int[]{-2,-1,1,2})));
+        System.out.println(Arrays.toString(asteroidCollision(new int[]{5,10,-5})));
     }
-    // public static int[] asteroidCollision(int[] asteroids) {
-    //     Stack<Integer> collision = new Stack<>();
-    //     // collision.push(asteroids[0]);
-    //     // for(int i=1;i<asteroids.length;i++){
-    //     //     if(!collision.isEmpty() && Math.abs(asteroids[i])==collision.peek() && !hasSameSignAsPeek(collision, asteroids[i])){
-    //     //         collision.pop();
-    //     //     }
-    //     //     else{
-    //     //         while(!collision.isEmpty() && Math.abs(asteroids[i])>collision.peek() && !hasSameSignAsPeek(collision, asteroids[i])){
-    //     //             collision.pop();
-    //     //             //collision.push(asteroids[i]);
-    //     //         }
-    //     //         if(!collision.isEmpty() && Math.abs(asteroids[i])>collision.peek()){
-    //     //             collision.push(asteroids[i]);
-    //     //         }
-    //     //     }
-    //     // }
-    //     // int[] ans= new int[collision.size()];
-    //     // for(int i=collision.size()-1;i>=0;i--){
-    //     //     ans[i]=collision.pop();
-    //     // }
-    //     // return ans;
-    // }
-    // // public static boolean hasSameSignAsPeek(Stack<Integer> stack, int incomingElement) {
-    //     // Function to check if the incoming element has the same sign as the top element of the stack.
-    //     if (stack.isEmpty()) {
-    //         // The stack is empty, so there's no top element to compare with.
-    //         return true;
-    //     }
-
-    //     int topElement = stack.peek();
-    //     return getSign(topElement) == getSign(incomingElement);
-    // }
-    // public static int getSign(int num) {
-    //     if (num > 0) {
-    //         return 1;
-    //     } else if (num < 0) {
-    //         return -1;
-    //     } else {
-    //         return 0;
-    //     }
-    // }
+    public static int[] asteroidCollision(int[] asteroids) {
+        Stack<Integer> collision = new Stack<>();
+        for (int astroid: asteroids) {
+            while (!collision.isEmpty() && astroid<0 && collision.peek()>0) {
+                int diff = astroid + collision.peek();
+                if (diff>0){
+                    astroid = 0;
+                }
+                else if (diff<0){
+                    collision.pop();
+                }else{
+                    astroid = 0;
+                    collision.pop();
+                }
+            }
+            if (astroid!=0){
+                collision.add(astroid);
+            }
+        }
+        int[] ans = new int[collision.size()];
+        for (int i = ans.length; i >=0; i--) {
+            ans[i] = collision.peek();
+            collision.pop();
+        }
+        return ans;
+    }
+    
 }
