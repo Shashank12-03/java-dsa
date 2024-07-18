@@ -19,15 +19,15 @@ public class leetcode144 {
             return;
         }
         postorder(ans, root.left);
-        ans.add(root.val);
         postorder(ans, root.right);
+        ans.add(root.val);
     }
     private void inorder(List<Integer> ans, TreeNode root) {
         if (root==null){
             return;
         }
-        ans.add(root.val);
         postorder(ans, root.left);
+        ans.add(root.val);
         postorder(ans, root.right);
     }
     private void preorder(List<Integer> ans, TreeNode root) {

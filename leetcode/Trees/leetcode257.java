@@ -31,11 +31,12 @@ public class leetcode257{
         treestring.append(root.val);
         treestring.append("->");
         if(root.left==null && root.right==null){
-            treestring.deleteCharAt(treestring.length()-1);
             ans.add(treestring.toString());
         }
         helper(root.left,treestring);
         helper(root.right,treestring);
+        treestring.delete(treestring.length()-2, treestring.length());
+        treestring.deleteCharAt(treestring.length()-1)
     }
     
 }
