@@ -9,7 +9,10 @@ class Pairs{
 }
 public class leetcode200 {
     public static void main(String[] args) {
-        char[][] grid={{'1','1','1','1','0'},{'1','1','0','1','0'},{'1','1','0','0','0'},{'0','0','0','0','0'}};
+        char[][] grid={{'1','1','1','1','0'},
+                       {'1','1','0','1','0'},
+                       {'1','1','0','0','0'},
+                       {'0','0','0','0','0'}};
         System.out.println(numIslands(grid));
     }
     static int rowLength;

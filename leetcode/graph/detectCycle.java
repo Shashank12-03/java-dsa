@@ -11,10 +11,10 @@ public class detectCycle {
     public static boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean[] visited=new boolean[V];
         for (int i = 0; i < visited.length; i++) {
-            visited[i]=true;
+            visited[i]=false;
         }
         for (int i = 0; i < visited.length; i++) {
-            if(detectcycle(i,V,adj,visited)){
+            if(!visited[i]){
                 return true;
             }
         }
