@@ -1,7 +1,6 @@
 package Trees;
 
 import java.util.*;
-import Trees.TreeNode;
 
 public class leetcode127 {
     public static void main(String[] args) {
@@ -9,34 +8,82 @@ public class leetcode127 {
     }
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+
         if (!wordList.contains(endWord)) {
             return 0;
         }
-        Set<String> visited = new HashSet<>();
-        Queue<String> queue = new LinkedList<>();
-        queue.offer(beginWord);
-        int length = 0;
+        Set<String> store = new HashSet<>();
+        for (String string : wordList) {
+            store.add(string);
+        }
+
+        Queue<Pair> queue = new LinkedList<>();
+        queue.offer(new Pair(beginWord, 1));
         while (!queue.isEmpty()) {
-            int size = queue.size();
-            length++;
-            for (int i = 0; i < size; i++) {
-                String current = queue.poll();
-                for (int j = 0; j < current.length(); j++) {
-                    char[] temp = current.toCharArray();
-                    for (char ch = 'a'; ch <= 'z'; ch++) {
-                        temp[j] = ch;
-                        String newword = new String(temp);
-                        if (newword.equals(endWord)) {
-                            return length + 1;
-                        }
-                        if (wordList.contains(newword) && !visited.contains(newword)) {
-                            queue.offer(newword);
-                            visited.add(newword);
-                        }
+            String word = queue.peek().str;
+            int step = queue.peek().cnt;
+            queue.remove();
+            if (word.equals(endWord)){
+                return step;
+            }
+            for (int j = 0; j < word.length(); j++) {
+                for (char ch = 'a'; ch <= 'z'; ch++) {
+                    char[] temp = word.toCharArray();
+                    temp[j] = ch;
+                    String newword = new String(temp);
+                    if (store.contains(newword)==true) {
+                        store.remove(newword);
+                        queue.add(new Pair(newword, step+1));
                     }
                 }
             }
         }
         return 0;
+    }
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        List<List<String>> ans = new ArrayList<>();
+        List<String> ladder = new ArrayList<>();
+
+        if (!wordList.contains(endWord)) {
+            return ans;
+        }
+        Set<String> store = new HashSet<>();
+        for (String string : wordList) {
+            store.add(string);
+        }
+
+        Queue<Pair> queue = new LinkedList<>();
+        queue.offer(new Pair(beginWord, 1));
+        ladder.add(beginWord);
+        while (!queue.isEmpty()) {
+            String word = queue.peek().str;
+            int step = queue.peek().cnt;
+            queue.remove();
+            if (word.equals(endWord)){
+                ans.add(new ArrayList<>(ladder));
+                return ans;
+            }
+            for (int j = 0; j < word.length(); j++) {
+                for (char ch = 'a'; ch <= 'z'; ch++) {
+                    char[] temp = word.toCharArray();
+                    temp[j] = ch;
+                    String newword = new String(temp);
+                    if (store.contains(newword)==true) {
+                        ladder.add(newword);
+                        store.remove(newword);
+                        queue.add(new Pair(newword, step+1));
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+class Pair{
+    String str;
+    int cnt;
+    Pair(String str,int cnt){
+        this.str = str;
+        this.cnt = cnt;
     }
 }
