@@ -2,7 +2,7 @@ package binarysearch;
 import java.util.*;
 public class leetcode658 {
     public static void main(String[] args) {
-        System.out.println(findClosestElements(new int[]{0,1,1,1,2,3,6,7,8,9},9, 4));
+        System.out.println(findClosestElements(new int[]{1,2,3,4,5},4, 3));
     }
     public static List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> ans= new ArrayList<>();
@@ -24,41 +24,45 @@ public class leetcode658 {
             }
         }
         else{
-            int left=point-1;
-            int right=point;
+            int left=point;
+            int right=point+1;
+            //1,2,3,4,5
             while (count<k) {
                 if(right==arr.length){
-                    ans.add(arr[left]);
                     if(left>0){
+                        ans.add(arr[left]);
                         left--;
                     }
                 }
-                else if((Math.abs((arr[left]-x)))<(Math.abs((arr[right]-x)))){
-                    ans.add(arr[left]);
+                else if((Math.abs((arr[left]-x)))<=(Math.abs((arr[right]-x))) && left<right){
                     if(left>0){
+                        ans.add(arr[left]);
                         left--;
-                    }
-                }
-                else if((Math.abs((arr[left]-x)))>(Math.abs((arr[right]-x)))){
-                    ans.add(arr[right]);
-                    if(right<arr.length){
+                    }else{
+                        ans.add(arr[right]);
                         right++;
                     }
                 }
-                else{
-                    if (arr[left]>arr[right]) {
-                        ans.add(arr[right]);
-                        if(right<arr.length){
-                            right++;
-                        }
-                    }
-                    if (arr[left]<arr[right]) {
-                        ans.add(arr[left]);
-                        if(left>0){
-                            left--;
-                        }
-                    }
-                }
+                // else if((Math.abs((arr[left]-x)))>(Math.abs((arr[right]-x))) && left<right){
+                //     ans.add(arr[right]);
+                //     if(right<arr.length){
+                //         right++;
+                //     }
+                // }
+                // else{
+                //     if (arr[left]>arr[right]) {
+                //         ans.add(arr[right]);
+                //         if(right<arr.length){
+                //             right++;
+                //         }
+                //     }
+                //     if (arr[left]<arr[right]) {
+                //         ans.add(arr[left]);
+                //         if(left>0){
+                //             left--;
+                //         }
+                //     }
+                // }
                 count++;
             }
         }
