@@ -1,9 +1,9 @@
 package dp;
 public class leetcode2035 {
     public static void main(String[] args) {
-        System.out.println(minimumDifference(new int[]{91,14,16,82,32,2,38,94}));
+        System.out.println(minimumDifference(new int[]{3,9,7,3}));
     }
-    public static int minimumDifference(int[] nums) {
+    public static int minimumDifference(int[] arr) {
         // int n = nums.length;
         // int min_ele=Integer.MAX_VALUE;
         // int[] prefix = new int[n + 1];
@@ -26,45 +26,42 @@ public class leetcode2035 {
         //     res = Math.min(res, Math.abs(total - curr - curr));
         // }
         // return res;
-        int total_sum=0;
-        int min_dif=Integer.MAX_VALUE;
-        int min_ele=Integer.MAX_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            min_ele=Math.min(min_ele, nums[i]);
+        int totalSum = 0;
+        for (int num : arr) {
+            totalSum += num;
         }
-        for (int i = 0; i < nums.length; i++) {
-            nums[i]+=Math.abs(min_ele);
+
+        boolean[][] dp = new boolean[arr.length][totalSum + 1];
+
+        // Initialize first row
+        for (int i = 0; i < arr.length; i++) {
+            dp[i][0] = true;
         }
-        for (int num : nums) {
-            total_sum+=num;
+
+        if (arr[0] <= totalSum) {
+            dp[0][arr[0]] = true;
         }
-        boolean[][] dp=new boolean[nums.length][total_sum+1];
-        for (int i = 0; i < nums.length; i++) {
-            dp[i][0]=true;
-        }
-        if(nums[0]<=total_sum){
-            dp[0][nums[0]]=true;
-        }
-        for (int ind = 1; ind < nums.length; ind++) {
-            for (int  target= 1; target <= total_sum; target++) {
-                boolean not_take=dp[ind-1][target];
-                boolean take=false;
-                if (nums[ind]<=target) {
-                    take=dp[ind-1][target-nums[ind]];
+
+        // Fill the DP table
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 1; j <= totalSum; j++) {
+                boolean notTake = dp[i - 1][j];
+                boolean take = false;
+                if (arr[i] <= j) {
+                    take = dp[i - 1][j - arr[i]];
                 }
-                dp[ind][target]=take||not_take;
+                dp[i][j] = take || notTake;
             }
         }
-        // for (boolean[] bs : dp) {
-        //     System.out.println(Arrays.toString(bs));
-        // }
-        for (int i = 0; i <= total_sum/2; i++) {
-            if (dp[nums.length-1][i]) {
-                int sum1=i;
-                int sum2=total_sum-sum1;
-                min_dif=Math.min(min_dif, Math.abs(sum1-sum2));
+
+        // Find the minimum difference
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i <= totalSum / 2; i++) {
+            if (dp[arr.length - 1][i]) {
+                min = Math.min(min, Math.abs((totalSum - i) - i));
             }
         }
-        return min_dif;
+
+        return min;
     }
 }
