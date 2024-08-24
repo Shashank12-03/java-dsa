@@ -2,8 +2,8 @@ package dsa.linkedlist;
 
 public class Main {
     public static void main(String[] args) {
-        single();
-       // Double();
+        // single();
+        Double();
     }
     static void single(){
         singlyLL list= new singlyLL();

@@ -13,6 +13,7 @@ public class arithmatic {
                 arithmatic=true;
             }
             else{
+                arithmatic = false;
                 break;
             }
         }
@@ -23,6 +24,7 @@ public class arithmatic {
                 geometric=true;
             }
             else{
+                geometric = false;
                 break;
             }
         }

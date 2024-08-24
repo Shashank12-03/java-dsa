@@ -30,7 +30,7 @@ public class BottomView {
             QueueNode qNode = queue.poll();
             int hd = qNode.horizontalDistance;
             map.put(hd, qNode.node.val);
-
+            
             if (qNode.node.left != null) {
                 queue.offer(new QueueNode(qNode.node.left, hd - 1));
             }
