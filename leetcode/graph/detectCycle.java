@@ -1,8 +1,8 @@
 package graph;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+// import java.util.LinkedList;
+// import java.util.Queue;
 
 public class detectCycle {
     public static void main(String[] args) {
@@ -20,23 +20,23 @@ public class detectCycle {
         }
         return false;
     }
-    private static boolean detectcycle(int src, int v, ArrayList<ArrayList<Integer>> adj, boolean[] visited) {
-        visited[src]=true;
-        Queue<Pairs> store=new LinkedList<>();
-        store.add(new Pairs(src,-1));
-        while (!store.isEmpty()) {
-            Pairs current=store.poll();
-            int currentNode=current.first;
-            int parent=current.second;
-            for (int node :adj.get(currentNode)) {
-                if (!visited[node]) {
-                    visited[node]=true;
-                    store.add(new Pairs(node,currentNode));
-                }else if (parent!=node) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+    // private static boolean detectcycle(int src, int v, ArrayList<ArrayList<Integer>> adj, boolean[] visited) {
+    //     visited[src]=true;
+    //     Queue<Pairs> store=new LinkedList<>();
+    //     store.add(new Pairs(src,-1));
+    //     while (!store.isEmpty()) {
+    //         Pairs current=store.poll();
+    //         int currentNode=current.first;
+    //         int parent=current.second;
+    //         for (int node :adj.get(currentNode)) {
+    //             if (!visited[node]) {
+    //                 visited[node]=true;
+    //                 store.add(new Pairs(node,currentNode));
+    //             }else if (parent!=node) {
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
 }

@@ -19,8 +19,8 @@ class adjacencyList {
                 if (edges[j][0]==i){
                     inner.add(edges[j][1]);
                 }
-                else if (edges[j][1]==i){
-                    inner.add(edges[j][0]);
+else if (edges[j][1]==i){
+                                    inner.add(edges[j][0]);
                 }
             }
             ans.add(inner);

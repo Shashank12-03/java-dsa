@@ -1,9 +1,9 @@
 package Trees;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.Collections;
+// import java.util.List;
 
 public class leetcode99 {
     public static void main(String[] args){
@@ -18,53 +18,30 @@ public class leetcode99 {
         TreeNode node1 = new TreeNode(1, node0, node8);
 
         TreeNode root = new TreeNode(3, node5, node1);
-        
-        recoverTree(root);
+        leetcode99 sol = new leetcode99();
+        sol.recoverTree(root);
     }
-    public static void recoverTree(TreeNode root) {
-        List<Integer> list = new ArrayList<>();
-        helper(root,list);
-        System.out.println(list);
-        // Collections.sort(list);
-        int[] arr = new int[list.size()];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = list.get(i); 
-        }
-        // Arrays.sort(arr);
-        Collections.sort(list);
-        int firstInd = -1;
-        int secondInd = -1;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i]!=list.get(i)){
-                if (firstInd!=-1){
-                    secondInd = i;
-                }else{
-                    firstInd = i;
-                }
-            }
-        }
-        int temp = arr[firstInd];
-        arr[firstInd] = arr[secondInd];
-        arr[secondInd]= temp;
-        root = sortedArrayToBST(arr);
+    TreeNode first;
+    TreeNode second;
+    TreeNode prev;
+    public void recoverTree(TreeNode root) {
+        helper(root);
+        int temp = first.val;
+        first.val = second.val;
+        second.val = temp;
     }
-    private static void helper(TreeNode root, List<Integer> list) {
+    private void helper(TreeNode root){
         if(root==null){
             return;
         }
-        helper(root.left, list);
-        list.add(root.val);
-        helper(root.right, list);
-    }
-    public static TreeNode sortedArrayToBST(int[] nums) {
-        if(nums.length==0){
-            return null;
+        helper(root.left);
+        if(prev!=null && prev.val>root.val){
+            if(first==null){
+                first = prev;
+            }
+            second = root;
         }
-        TreeNode root= new TreeNode(nums[nums.length/2]);
-        int[]left=Arrays.copyOfRange(nums, 0, nums.length/2);
-        int[]right=Arrays.copyOfRange(nums, (nums.length/2)+1, nums.length);
-        root.left=sortedArrayToBST(left);
-        root.right=sortedArrayToBST(right);
-        return root;
+        prev = root;
+        helper(root.right);
     }
 }
