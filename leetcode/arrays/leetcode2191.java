@@ -26,7 +26,7 @@ public class leetcode2191 {
 
     //     return nums;
     // }
-    public int[] sortJumbled(int[] mapping, int[] nums) {
+    public static int[] sortJumbled(int[] mapping, int[] nums) {
         // this problem can be solved using the concept of Radix Sort;
         int max = -1 ;
         

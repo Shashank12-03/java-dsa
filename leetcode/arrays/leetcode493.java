@@ -1,3 +1,4 @@
+package arrays;
 
 public class leetcode493 {
     public static void main(String[] args) {
