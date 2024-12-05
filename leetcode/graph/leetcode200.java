@@ -9,54 +9,83 @@ class Pairs{
 }
 public class leetcode200 {
     public static void main(String[] args) {
-        char[][] grid={{'1','1','1','1','0'},
-                       {'1','1','0','1','0'},
-                       {'1','1','0','0','0'},
-                       {'0','0','0','0','0'}};
+        char[][] grid={{'0','1'},
+                       {'1','0'},
+                       {'1','1'},
+                       {'1','0'}};
         System.out.println(numIslands(grid));
     }
-    static int rowLength;
-    static int coLength;
-    static char[][] g;
-    static int count;
-
     public static int numIslands(char[][] grid) {
-        rowLength = grid.length;
-        coLength = grid[0].length;
-        g = grid;
-        count = 0;
-        for (int i = 0; i < rowLength; i++) {
-            check(g[i], i);
+        // Code here
+        int n = grid.length;
+        int m = grid[0].length;
+        int[][] visited = new int[n][m];
+        int ans = 0;
+        for(int i = 0;i<n;i++){
+            for(int j = 0;j<m;j++){
+                if(grid[i][j]=='1' && visited[i][j]!=1){
+                    ans++;
+                    dfs(visited,grid,i,j,n,m);
+                }
+            }
         }
-        return count;
+        return ans;
     }
-
-    public static void check(char[] g, int i) {
-        for (int j = 0; j < coLength; j++) {
-            if (g[j] == '1') {
-                bfs(i, j);
-                count++;
+    
+    private static void dfs(int[][] visited,char[][]grid,int i, int j,int n, int m){
+        visited[i][j] = 1;
+        for(int row = -1;row<=1;row++){
+            for(int col = -1;col<=1;col++){
+                if ((i+row>=0 && i+row<n) && (j+col>=0 && j+col<m)) {
+                    if(grid[i+row][j+col]=='1' && visited[i+row][j+col]!=1){
+                        dfs(visited,grid,i+row,j+col,n,m);
+                    }
+                }
             }
         }
     }
+    // static int rowLength;
+    // static int coLength;
+    // static char[][] g;
+    // static int count;
 
-    public static void bfs(int i, int j) {
-        // In the bfs method, g[i][j] = '2'; is used to mark the cell at position (i, j)
-        // as visited
-        g[i][j] = '2';
-        if (i - 1 >= 0 && g[i - 1][j] == '1') {
-            bfs(i - 1, j);
-        }
-        if (i + 1 < rowLength && g[i + 1][j] == '1') {
-            bfs(i + 1, j);
-        }
-        if (j - 1 >= 0 && g[i][j - 1] == '1') {
-            bfs(i, j - 1);
-        }
-        if (j + 1 < coLength && g[i][j + 1] == '1') {
-            bfs(i, j + 1);
-        }
-    }
+    // public static int numIslands(char[][] grid) {
+    //     rowLength = grid.length;
+    //     coLength = grid[0].length;
+    //     g = grid;
+    //     count = 0;
+    //     for (int i = 0; i < rowLength; i++) {
+    //         check(g[i], i);
+    //     }
+    //     return count;
+    // }
+
+    // public static void check(char[] g, int i) {
+    //     for (int j = 0; j < coLength; j++) {
+    //         if (g[j] == '1') {
+    //             bfs(i, j);
+    //             count++;
+    //         }
+    //     }
+    // }
+
+    // public static void bfs(int i, int j) {
+    //     // In the bfs method, g[i][j] = '2'; is used to mark the cell at position (i, j)
+    //     // as visited
+    //     g[i][j] = '2';
+    //     if (i - 1 >= 0 && g[i - 1][j] == '1') {
+    //         bfs(i - 1, j);
+    //     }
+    //     if (i + 1 < rowLength && g[i + 1][j] == '1') {
+    //         bfs(i + 1, j);
+    //     }
+    //     if (j - 1 >= 0 && g[i][j - 1] == '1') {
+    //         bfs(i, j - 1);
+    //     }
+    //     if (j + 1 < coLength && g[i][j + 1] == '1') {
+    //         bfs(i, j + 1);
+    //     }
+    // }
     // public static int numIslands(char[][] grid) {
     //     int count=0;
     //     int[][] visited=new int[grid.length][grid[0].length];

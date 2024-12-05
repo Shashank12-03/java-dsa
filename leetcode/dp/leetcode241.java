@@ -10,6 +10,7 @@ public class leetcode241 {
     public List<Integer> diffWaysToCompute(String expression) {
         List<Integer> ans = new ArrayList<>();
         helper(expression,0,expression.length()-1,ans);
+        return ans;
     }
     private void helper(String expression, int i, int j,List<Integer> ans) {
         if (i>j) {
