@@ -9,8 +9,8 @@ public class leaders {
     public static ArrayList<Integer> leaderArray(int n, int arr[]) {
         ArrayList<Integer> ans = new ArrayList<>();
         int currentmax =Integer.MIN_VALUE;
-        for(int i = n;i>=0;i--){
-            if(i>0 && arr[i-1]>=currentmax){
+        for(int i = n;i>0;i--){
+            if(arr[i-1]>=currentmax){
                 ans.add(arr[i-1]);
                 currentmax = arr[i-1]; 
             }
