@@ -3,10 +3,10 @@ import java.util.*;
 
 public class PermutationofString {
     public static void main(String[] args) {
-        // permutationofstring("","abc");
+        permutationofstring("","abc");
         ArrayList<String> ans=permutation("","abc");
         System.out.println(ans);
-        //System.out.println(permutationcount("","abc"));
+        System.out.println(permutationcount("","abc"));
     }
     static void permutationofstring(String p, String up){
         if(up.isEmpty()){
