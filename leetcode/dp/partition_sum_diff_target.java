@@ -5,9 +5,9 @@ public class partition_sum_diff_target {
         System.out.println(countPartitions(new int[]{5,2,6,4}, 3));
     }
     static int countPartitions(int[] nums, int target){
-        int totSum = 0;
+        int  totSum = 0;
         for(int i=0; i<nums.length;i++){
-            totSum += nums[i];
+            totSum +=nums[i];
         }
         
         //Checking for edge cases

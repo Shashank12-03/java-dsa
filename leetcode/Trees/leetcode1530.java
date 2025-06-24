@@ -1,50 +1,57 @@
 package Trees;
 
-import java.util.*;
-
 public class leetcode1530 {
     public static void main(String[] args) {
-        // Creating nodes
-        TreeNode node4 = new TreeNode(4);
-        TreeNode node5 = new TreeNode(5);
-        TreeNode node6 = new TreeNode(6);
-        TreeNode node7 = new TreeNode(7);
-        TreeNode node2 = new TreeNode(2, node4, node5);
-        TreeNode node3 = new TreeNode(3, node6, node7);
-        TreeNode root = new TreeNode(1, node2, node3);
-        
-        // Print the tree in pre-order to verify
-        // printPreOrder(root);
-        System.out.println(countPairs(root, 3));
+        TreeNode root = new TreeNode(7);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(4);
+        root.left.left = new TreeNode(6);
+        root.right.left = new TreeNode(5);
+        root.right.right = new TreeNode(3);
+        root.right.right.right = new TreeNode(2);
+
+        leetcode1530 solution = new leetcode1530();
+        int distance = 3;
+        int result = solution.countPairs(root, distance);
+        System.out.println("Number of good leaf node pairs: " + result);
     }
 
-    // Helper method to print the tree in pre-order traversal
-    public static void printPreOrder(TreeNode node) {
-        if (node == null) {
-            return;
-        }
-        System.out.print(node.val + " ");
-        printPreOrder(node.left);
-        printPreOrder(node.right);
-    }
 
-    static int count = 0;
-    public static int countPairs(TreeNode root, int distance) {
-        List<Integer> ans = new ArrayList<>();
-        helper(root,ans);
-        System.out.println(ans);
-        return 1;
-
+    public int countPairs(TreeNode root, int distance) {
+        int[]ans = new int[1];
+        helper(root,distance,ans);
+        return ans[0];
     }
-    private static void helper(TreeNode root, List<Integer> ans) {
-        if (root == null){
-            return;
+    private int[] helper(TreeNode root, int distance,int[]ans) {
+        if(root==null){
+            return new int[]{};
         }
         if (root.left == null && root.right == null){
-            ans.add(root.val);
+            return new int[]{1};
         }
-        helper(root.left, ans);
-        helper(root.right, ans);
-        
+        int[] left = helper(root.left, distance,ans); // 0 0
+        int[] right = helper(root.right, distance,ans); // 0 1
+        for(int d1:left){
+            for(int d2:right){
+                if(d1 + d2 <= distance) {
+                    ans[0]++;
+                }
+            }
+        }
+        int[] allCombined = new int[left.length + right.length];
+        for(int i = 0; i < left.length; i++) {
+            allCombined[i] = left[i] + 1; // increment distance for left child
+        }
+        for(int i = 0; i < right.length; i++) {
+            allCombined[left.length + i] = right[i] + 1; // increment distance for right child
+        }
+        return allCombined;
+        //        7
+        //       / \
+        //      1   4 
+        //     /   / \
+        //    6   5   3
+        //             \
+        //              2
     }
 }
